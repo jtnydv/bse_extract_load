@@ -67,12 +67,12 @@ for line in lines[1:]:
     info = {}
     split_line = line.split(',')
     info['code'] = split_line[0].strip()
-    info['name'] = split_line[1].strip()
+    info['name'] = split_line[1].strip().lower()
     info['open'] = float(split_line[4])
     info['high'] = float(split_line[5])
     info['low'] = float(split_line[6])
     info['close'] = float(split_line[7])
-    info_collection[split_line[1].strip()] = info
+    info_collection[split_line[1].strip().lower()] = info
 
 conn = redis.Redis('localhost')
 conn.hmset('bse_data', info_collection)
