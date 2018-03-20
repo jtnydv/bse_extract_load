@@ -74,9 +74,5 @@ for line in lines[1:]:
     info['close'] = float(split_line[7])
     info_collection[split_line[1].strip().lower()] = info
 
-conn = redis.Redis('localhost')
+conn = redis.Redis(host='redis-10041.c8.us-east-1-4.ec2.cloud.redislabs.com', port=10041, db=0, password='6relaA2NNReIr7ZseaDPTeQArzcjlaDX')
 conn.hmset('bse_data', info_collection)
-
-# SEARCH IN REDIS
-# for stock in conn.scan_iter(match='*ICIC*'):
-#     print conn.hget('bse_data', stock)
